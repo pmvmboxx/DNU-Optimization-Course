@@ -1,0 +1,14 @@
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\bin\Debug\net8.0\Queue.exe
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\bin\Debug\net8.0\Queue.deps.json
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\bin\Debug\net8.0\Queue.runtimeconfig.json
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\bin\Debug\net8.0\Queue.dll
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\bin\Debug\net8.0\Queue.pdb
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\Queue.GeneratedMSBuildEditorConfig.editorconfig
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\Queue.AssemblyInfoInputs.cache
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\Queue.AssemblyInfo.cs
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\Queue.csproj.CoreCompileInputs.cache
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\Queue.dll
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\refint\Queue.dll
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\Queue.pdb
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\Queue.genruntimeconfig.cache
+D:\Document1\UNIVERSITY\6\Optimization\Lab1_Stack_Queue\Queue\obj\Debug\net8.0\ref\Queue.dll
