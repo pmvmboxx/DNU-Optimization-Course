@@ -1,4 +1,6 @@
-﻿namespace Lab2_Array
+﻿using System;
+
+namespace Lab2_Array
 {
     internal class Program
     {
@@ -32,12 +34,12 @@
                         Task2(matrix);
                         break;
                     case 3:
-                        int[] a = { 5, 255, 0, 170, 85, 128, 15, 240, 34, 221 };
-                        int[] b = { 1, 255, 255, 85, 170, 0, 15, 0, 17, 221 };
-                        Task3_BiWiseCoparison(a, b);
+                        int[] a = { 45158, 12345, 65535, 0, 11111, 22222, 33333, 44444, 55555, 60000 };
+                        int[] b = { 7125, 54321, 0, 65535, 11111, 12345, 33333, 9999, 8888, 60000 };
+                        Task3_BiWiseComparison(a, b);
                         break;
                     case 0:
-                        Console.WriteLine("До побачення!");
+                        Console.WriteLine("Завершення програми.");
                         break;
                     default:
                         Console.WriteLine("Невірний вибір.");
@@ -50,19 +52,23 @@
         // Завдання 1 
         public static void Task1(int[] arr)
         {
-            HashSet<int> sums = new HashSet<int>();
-            int sum = 0;
             bool found = false;
 
-            foreach (int num in arr)
+            for (int i = 0; i < arr.Length; i++)
             {
-                sum += num;
-                if (sum == 0 || sums.Contains(sum))
+                int sum = 0;
+                for (int j = i; j < arr.Length; j++)
                 {
-                    found = true;
-                    break;
+                    sum += arr[j];
+                    if (sum == 0)
+                    {
+                        found = true;
+                        break;
+                    }
                 }
-                sums.Add(sum);
+
+                if (found)
+                    break;
             }
 
             Console.WriteLine("\nМасив: " + string.Join(", ", arr));
@@ -99,7 +105,6 @@
 
             Console.WriteLine("\nПочаткова матриця:");
             PrintMatrix(matrix);
-
             if (minRow != maxRow)
             {
                 for (int j = 0; j < cols; j++)
@@ -108,9 +113,14 @@
                     matrix[minRow, j] = matrix[maxRow, j];
                     matrix[maxRow, j] = temp;
                 }
+
+                Console.WriteLine($"\nРядки {minRow} (мін={min}) та {maxRow} (макс={max}) поміняно місцями.");
+            }
+            else
+            {
+                Console.WriteLine("\nМаксимум і мінімум у одному рядку. Заміна не потрібна.");
             }
 
-            Console.WriteLine($"\nРядки {minRow} (мін={min}) та {maxRow} (макс={max}) поміняно місцями.");
             Console.WriteLine("Матриця після заміни:");
             PrintMatrix(matrix);
         }
@@ -130,40 +140,50 @@
         }
 
         // Завдання 3 
-        public static void Task3_BiWiseCoparison(int[] a, int[] b)
+        public static void Task3_BiWiseComparison(int[] arr1, int[] arr2)
         {
+
+            int[] resultArr = new int[10];
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("\na = ");
-            PrintMatrix(a);
+            Console.WriteLine("[" + string.Join(", ", arr1) + "]");
+
             Console.Write("b = ");
-            PrintMatrix(b);
-            
-            int[] result = new int[10];
+            Console.WriteLine("[" + string.Join(", ", arr2) + "]");
+            Console.ResetColor();
 
+            Console.WriteLine("\nРезультати побітового порівняння:");
             for (int i = 0; i < 10; i++)
             {
-                result[i] = Xnor(a[i], b[i]);
+                int a = arr1[i];
+                int b = arr2[i];
+                int result = ~(a ^ b) & 0xFFFF;  // побітове XNOR для 16 біт
+                resultArr[i] = result;
+   
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"\narr1[{i}]={a} ");
+                Console.Write($"arr2[{i}]={b}");
+                Console.ResetColor();
+
+                Console.WriteLine("\n\nBinary:");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(Convert.ToString(a, 2).PadLeft(16, '0'));
+                Console.WriteLine(Convert.ToString(b, 2).PadLeft(16, '0'));
+                Console.ResetColor();
+                Console.WriteLine(new string('─', 16));
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(Convert.ToString(result, 2).PadLeft(16, '0'));
+                Console.ResetColor();
+
+                Console.WriteLine($"Decimal: {result}");
+                Console.WriteLine($"Hex: {result:X4}");
             }
 
-            Console.WriteLine("\nІндекс |   A   |   B   | Результат (Dec) | Результат (Hex)");
-            Console.WriteLine("----------------------------------------------------------");
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine($"{i,5} | {a[i],5} | {b[i],5} | {result[i],15} | {result[i]:X2}");
-            }
-        }
-
-        public static int Xnor(int a, int b)
-        {
-            return ~(a ^ b) & 0xFF; // 8 біт
-        }
-
-        public static void PrintMatrix(int[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.Write($"{array[i],4}");
-            }
-            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\nРезультуючий масив:");
+            Console.WriteLine("[" + string.Join(", ", resultArr) + "]");
+            Console.ResetColor();
         }
     }
 }
