@@ -110,7 +110,7 @@ class Program
 
     static int Partition(int[] arr, int low, int high)
     {
-        // Median-of-three: середній із першого, середнього і останнього
+        // середній із першого, середнього і останнього
         int mid = low + (high - low) / 2;
         int pivot = MedianOfThree(arr[low], arr[mid], arr[high]);
 
